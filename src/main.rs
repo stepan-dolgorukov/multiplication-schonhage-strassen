@@ -5,6 +5,7 @@ use std::{str::FromStr, vec::Vec};
 use num_complex::Complex;
 use std::f64::consts::PI;
 use std::error::Error;
+use std::time::{Duration, Instant};
 
 fn represent_as_vector(value: &BigUint) -> Vec<Complex<f64>> {
   value.
@@ -143,8 +144,11 @@ fn main() -> Result<(), Box<dyn Error>> {
 
   let operand_left: BigUint = operands.next().expect("fail to get a left operand");
   let operand_right: BigUint = operands.next().expect("fail to get a right operand");
+  let instant: Instant = Instant::now();
   let product: BigUint = calculate_product(&operand_left, &operand_right);
+  let duration_calculation: Duration = instant.elapsed();
 
   println!("{} * {} = {}", operand_left, operand_right, product);
+  println!("{} ns", duration_calculation.as_nanos());
   Ok(())
 }
