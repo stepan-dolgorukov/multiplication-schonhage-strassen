@@ -3,6 +3,10 @@ name = "multiplication-schonhage-strassen"
 version = "0.1.0"
 edition = "2024"
 
+[[bin]]
+name = "muss"
+path = "main.rs"
+
 [dependencies]
 num-bigint = "0.4.6"
 num-traits = "0.2.19"
